@@ -23,7 +23,6 @@ impl IControl for MainSene {
         Self { base }
     }
     fn ready(&mut self) {
-        godot_print!("start_button");
         let button = self.start_button();
         button.signals().pressed().connect_other(self, |_scene| {
             godot_print!("start_button");
