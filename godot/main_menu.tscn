@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://v0oem7yhtfqu"]
+
+[ext_resource type="Texture2D" uid="uid://chdbfu58qsfq7" path="res://assets/dark_dirt.png" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://d3bah1ctqonbx" path="res://assets/title.png" id="2_7vrkn"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_06t4h")
+stretch_mode = 1
+flip_v = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="CenterContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Logo"]
+layout_mode = 2
+texture = ExtResource("2_7vrkn")
+
+[node name="SplashHolder" type="SplashController" parent="VBoxContainer/Logo/TextureRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SplashTitle" type="Label" parent="VBoxContainer/Logo/TextureRect/SplashHolder"]
+layout_mode = 0
+offset_left = -64.0
+offset_top = 36.0
+offset_right = 181.0
+offset_bottom = 76.0
+rotation = -0.287979
+theme_override_font_sizes/font_size = 53
+text = "Made With Godot"
