@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://v0oem7yhtfqu"]
+[gd_scene load_steps=7 format=3 uid="uid://v0oem7yhtfqu"]
 
 [ext_resource type="Texture2D" uid="uid://chdbfu58qsfq7" path="res://assets/dark_dirt.png" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://d3bah1ctqonbx" path="res://assets/title.png" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://4jbymp4agcgn" path="res://assets/button.png" id="3_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://dw13yu1wxa0qu" path="res://assets/button_pressed.png" id="4_qe12f"]
+[ext_resource type="Texture2D" uid="uid://civnasedxkb41" path="res://assets/button_hover.png" id="5_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://d3undtrdoqgfj" path="res://assets/button_focus.png" id="6_dy7ct"]
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
+[node name="MainMenu" type="MainSene"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -60,3 +63,29 @@ offset_bottom = 76.0
 rotation = -0.287979
 theme_override_font_sizes/font_size = 53
 text = "Made With Godot"
+
+[node name="BoxHolder" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+alignment = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="VBoxContainer/BoxHolder"]
+layout_mode = 2
+
+[node name="Start" type="TextureButton" parent="VBoxContainer/BoxHolder/MainButtons"]
+layout_mode = 2
+texture_normal = ExtResource("3_nlkkf")
+texture_pressed = ExtResource("4_qe12f")
+texture_hover = ExtResource("5_8qtwp")
+texture_focused = ExtResource("6_dy7ct")
+
+[node name="StartLabel" type="Label" parent="VBoxContainer/BoxHolder/MainButtons/Start"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 62
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1

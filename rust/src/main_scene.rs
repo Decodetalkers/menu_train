@@ -1,26 +1,32 @@
-use godot::classes::Node2D;
+use godot::classes::Control;
+use godot::classes::IControl;
+use godot::classes::TextureButton;
 
-use godot::classes::CanvasLayer;
 use godot::prelude::*;
 
 #[derive(GodotClass)]
-#[class(base=Node2D)]
+#[class(base=Control)]
 struct MainSene {
-    base: Base<Node2D>,
+    base: Base<Control>,
 }
 
 impl MainSene {
-    fn text_box(&self) -> Gd<CanvasLayer> {
-        self.base().get_node_as("TextBox")
+    fn start_button(&self) -> Gd<TextureButton> {
+        self.base()
+            .get_node_as("VBoxContainer/BoxHolder/MainButtons/Start")
     }
 }
 
 #[godot_api]
-impl INode2D for MainSene {
-    fn init(base: Base<Node2D>) -> Self {
+impl IControl for MainSene {
+    fn init(base: Base<Control>) -> Self {
         Self { base }
     }
     fn ready(&mut self) {
-        self.text_box().hide();
+        godot_print!("start_button");
+        let button = self.start_button();
+        button.signals().pressed().connect_other(self, |_scene| {
+            godot_print!("start_button");
+        });
     }
 }
