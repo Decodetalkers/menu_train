@@ -33,8 +33,22 @@ impl MainWorld {
 #[godot_api]
 impl MainWorld {
     #[func]
-    fn get_block_global_position(block_global_position: Vector3i) {
+    pub fn get_block_global_position(&self, block_global_position: Vector3i) -> i32 {
+        let chunk_position = block_global_position / CHUNK_SIZE_I;
 
+        if let Some(chunk) = self.chunks.get(&chunk_position) {
+            let chunk_bind = chunk.bind();
+            let sub_position = block_global_position
+                .cast_float()
+                .posmod(CHUNK_SIZE)
+                .cast_int();
+            let data = chunk_bind.get_data();
+            if data.contains_key(sub_position.clone()) {
+                return data.get(sub_position).unwrap().try_to().unwrap();
+            }
+        }
+
+        return 0;
     }
 }
 
