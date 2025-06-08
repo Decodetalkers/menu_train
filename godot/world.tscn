@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhevn517b6i3b"]
+
+[ext_resource type="PackedScene" uid="uid://b30boxn2da4ax" path="res://player.tscn" id="1_f3sb7"]
+
+[sub_resource type="Environment" id="Environment_gv5m4"]
+
+[node name="World3d" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_f3sb7")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gv5m4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.600364, 0.799727, 0, -0.799727, 0.600364, 0, 0, 0)

@@ -24,8 +24,9 @@ impl IControl for MainSene {
     }
     fn ready(&mut self) {
         let button = self.start_button();
-        button.signals().pressed().connect_other(self, |_scene| {
-            godot_print!("start_button");
+        button.signals().pressed().connect_other(self, |scene| {
+            let mut tree = scene.base().get_tree().unwrap();
+            tree.change_scene_to_packed(&load::<PackedScene>("res://world.tscn"));
         });
     }
 }

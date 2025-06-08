@@ -2,7 +2,6 @@ use godot::classes::AnimatedSprite2D;
 use godot::classes::CharacterBody2D;
 use godot::classes::ICharacterBody2D;
 use godot::classes::Input;
-use godot::obj::WithBaseField;
 use godot::prelude::*;
 
 #[derive(GodotClass)]
