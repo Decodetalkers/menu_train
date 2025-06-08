@@ -5,6 +5,7 @@ mod world;
 mod main_scene;
 mod splash;
 mod settings;
+mod chunk;
 
 struct MyExtension;
 

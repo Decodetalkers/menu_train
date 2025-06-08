@@ -13,3 +13,5 @@ environment = SubResource("Environment_gv5m4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.600364, 0.799727, 0, -0.799727, 0.600364, 0, 0, 0)
+
+[node name="TheWrold" type="Node" parent="."]
