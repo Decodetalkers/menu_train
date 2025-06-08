@@ -4,7 +4,7 @@
 
 [sub_resource type="Environment" id="Environment_gv5m4"]
 
-[node name="World3d" type="Node3D"]
+[node name="World3d" type="MainWorld"]
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 
@@ -14,4 +14,4 @@ environment = SubResource("Environment_gv5m4")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.600364, 0.799727, 0, -0.799727, 0.600364, 0, 0, 0)
 
-[node name="TheWrold" type="Node" parent="."]
+[node name="TheWorld" type="Node" parent="."]

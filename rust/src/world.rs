@@ -26,7 +26,7 @@ impl MainWorld {
         self.base().get_node_as("Player")
     }
     fn the_world(&self) -> Gd<Node> {
-        self.base().get_node_as("the_world")
+        self.base().get_node_as("TheWorld")
     }
 }
 
@@ -59,7 +59,7 @@ impl INode3D for MainWorld {
             base,
             player_chunk: Vector3i::ZERO,
             deleting: false,
-            generating: false,
+            generating: true,
             effective_render_distance: 0,
             chunks: HashMap::new(),
         }
@@ -101,6 +101,7 @@ impl INode3D for MainWorld {
                         .distance_to(chunk_position.cast_float())
                         > RENDER_DISTANCE
                     {
+                        godot_print!("abc");
                         continue;
                     }
                     if self.chunks.contains_key(&chunk_position) {

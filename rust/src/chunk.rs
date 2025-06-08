@@ -20,7 +20,7 @@ fn flat(chunk_position: Vector3i) -> Dictionary {
 
     for x in 0..CHUNK_SIZE_I {
         for z in 0..CHUNK_SIZE_I {
-            data.insert(Vector3i { x, y: 0, z }, 3).unwrap();
+            data.set(Vector3i { x, y: 0, z }, 3);
         }
     }
 
@@ -101,7 +101,7 @@ fn draw_block_face(surface_tool: &mut SurfaceTool, verts: &Vec<Vector3>, uvs: &V
 #[godot_api]
 impl Chunk {
     #[func]
-    fn generate_chunk_mesh(&mut self) {
+    pub fn generate_chunk_mesh(&mut self) {
         if self.data.is_empty() {
             return;
         }
@@ -282,7 +282,13 @@ impl IStaticBody3D for Chunk {
         }
     }
     fn ready(&mut self) {
-        let world: Gd<MainWorld> = self.base().get_parent().unwrap().cast();
+        let world: Gd<MainWorld> = self
+            .base()
+            .get_parent()
+            .unwrap()
+            .get_parent()
+            .unwrap()
+            .cast();
         self.world.set(world).unwrap();
         let mut transform = self.base().get_transform();
         transform.origin = (self.chunk_position * (CHUNK_SIZE as i32)).cast_float();
